@@ -9,12 +9,20 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --black: rgb(0,0,0);
+  --white: rgb(255,255,255);
+  --razzmatazz:rgb(254,44,85);
+  --splash:rgb(37,244,238);
+  h1, h2, h3, h4, h5, figure, p, ol, ul {
+  margin: 0;
+}
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  position:relative;
 }
 
 h1 {
