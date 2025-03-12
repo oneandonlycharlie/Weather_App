@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       <header>
-        <img className="github-icon"src="/github-mark.svg" alt="github icon" />
+        <img className="github-icon"src="github-mark.svg" alt="github icon" />
       </header>
       <main>
         <div className='header'>
