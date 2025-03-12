@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Wind from "./assets/wind.svg"
-import Rain from "./assets/rain.svg"
-import Droplet from "./assets/droplet.svg"
-import Search from "./assets/search.svg"
 
 function App() {
   
@@ -58,14 +54,14 @@ function App() {
             <input type="text" placeholder='Search a city'
                   value={locationInput}
                   onChange={(e)=>{setInput(e.target.value)}}
-            /><button onClick={()=>setSearch(locationInput)}><img src={Search} alt="magnifying glass" /></button>
+            /><button onClick={()=>setSearch(locationInput)}><img src="search.svg" alt="magnifying glass" /></button>
           </div>
         </div>
         <section className="window">
           <div className='primary'>
             {dataToday &&
               <div className="logo item ">
-                <img className={`${dataToday.icon}`}src={`src/assets/conditions/${dataToday.icon}.svg`} alt="Weather Icon" />
+                <img className={`${dataToday.icon}`}src={`conditions/${dataToday.icon}.svg`} alt="Weather Icon" />
               </div>}
             <div className='temperature item'>
                 <span className='current'>{dataToday? dataToday.temp : ""}</span>
@@ -74,21 +70,21 @@ function App() {
             <div className='features item'>
               <div>
                 <div className="feature-logo">
-                  <img src={Wind} alt="" srcset="" />
+                  <img src="wind.svg" alt="" srcset="" />
                 </div>
                 <span className='current'>{dataToday? dataToday.windspeed : ""}</span>
                 <span>mph</span>
               </div>
               <div>
                 <div className="feature-logo">
-                  <img src={Rain} alt="" srcset="" />
+                  <img src="rain.svg" alt="" srcset="" />
                 </div>                
                 <span className='current'>{dataToday? dataToday.precipprob : ""}</span>
                 <span>%</span>
               </div>
               <div>
                 <div className="feature-logo">
-                  <img src={Droplet} alt="" srcset="" />
+                  <img src="droplet.svg" alt="" srcset="" />
                 </div>               
                 <span className='current'>{dataToday? dataToday.humidity : ""}</span>
                 <span>%</span>
@@ -98,7 +94,7 @@ function App() {
           <div className="secondary">
               {dataForecast? dataForecast.map((entry)=>(
               <div className="item" key={entry.datetimeeproch}>
-                <img src={`src/assets/conditions/${entry.icon}.svg`} alt="icon" />
+                <img src={`conditions/${entry.icon}.svg`} alt="icon" />
                 <span className="range">{entry.tempmax} / {entry.tempmin}</span>
                 <span className="date">{WEEKDAYS[new Date(entry.datetime).getDay()]}</span>
               </div>
