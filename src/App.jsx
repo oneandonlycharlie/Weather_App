@@ -17,6 +17,7 @@ function App() {
     fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchLocation? searchLocation : `Breda`}/next7days?unitGroup=metric&include=days%2Ccurrent&key=K9DBXADCCF4V6TWJPWSSWFCBN&contentType=json`)
     .then((response)=>{
       if (!response.ok){
+        alert("Oops, something's wrong. Try later with another loaction.");
         throw new Error("Network error")
       };
       return response.json()
@@ -41,9 +42,17 @@ function App() {
       </header>
       <main>
         <div className='header'>
-          <span>right now in <span className='razzmatazz location'>{dataToday? dataToday.address : ""}</span>, it's <span className='splash description'>{dataToday? dataToday.conditions.toLowerCase() : ""}</span>.</span>
+          <span>Right now in <span className='razzmatazz location'>{dataToday? dataToday.address : ""}</span>, it's <span className='splash description'>{dataToday? dataToday.conditions.toLowerCase() : ""}</span>.</span>
           <div className="cities">
-            <button>Breda, NL</button><button>Adana, Turkey</button><button>Qinzhou, China</button>
+            <button
+              onClick={()=>{setSearch("Breda")}}
+            >Breda, NL</button>
+            <button
+              onClick={()=>{setSearch("Adana")}}
+            >Adana, Turkey</button>
+            <button
+              onClick={()=>{setSearch("Qinzhou")}}
+            >Qinzhou, China</button>
           </div>
           <div className="search">
             <input type="text" placeholder='Search a city'
