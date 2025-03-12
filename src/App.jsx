@@ -9,11 +9,12 @@ function App() {
   
   const [dataToday, setDataToday] = useState(null)
   const [dataForecast, setForecast] = useState(null)
-  const [location, setLocation] = useState(null)
+  const [locationInput, setInput] = useState("")
+  const [searchLocation, setSearch] = useState("")
   const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
   useEffect(()=>{
-    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Breda/next7days?unitGroup=metric&include=days%2Ccurrent&key=K9DBXADCCF4V6TWJPWSSWFCBN&contentType=json")
+    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchLocation? searchLocation : `Breda`}/next7days?unitGroup=metric&include=days%2Ccurrent&key=K9DBXADCCF4V6TWJPWSSWFCBN&contentType=json`)
     .then((response)=>{
       if (!response.ok){
         throw new Error("Network error")
@@ -22,15 +23,16 @@ function App() {
     })
     .then((data)=>{
       console.log(data)
-      setLocation(data.address);
-      // const [current, ...forecast] = data.days
-      setDataToday(data.currentConditions)
+      const currentData = {
+        ...data.currentConditions, 
+        address: data.address
+      }
+      setDataToday(currentData)
       setForecast(data.days.splice(1,5))
     })
-  },[])
+  },[searchLocation])
 
- 
-
+  console.log(dataToday)
   
   return (
     <>
@@ -39,12 +41,15 @@ function App() {
       </header>
       <main>
         <div className='header'>
-          <span>right now in <span className='razzmatazz location'>{location || "  "}</span>, it's <span className='splash description'>{dataToday? dataToday.conditions : ""}</span>.</span>
+          <span>right now in <span className='razzmatazz location'>{dataToday? dataToday.address : ""}</span>, it's <span className='splash description'>{dataToday? dataToday.conditions.toLowerCase() : ""}</span>.</span>
           <div className="cities">
             <button>Breda, NL</button><button>Adana, Turkey</button><button>Qinzhou, China</button>
           </div>
           <div className="search">
-            <input type="text" placeholder='Search a city'/><button><img src={Search} alt="magnifying glass" /></button>
+            <input type="text" placeholder='Search a city'
+                  value={locationInput}
+                  onChange={(e)=>{setInput(e.target.value)}}
+            /><button onClick={()=>setSearch(locationInput)}><img src={Search} alt="magnifying glass" /></button>
           </div>
         </div>
         <section className="window">
