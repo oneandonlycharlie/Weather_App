@@ -3,16 +3,15 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --black: rgb(0,0,0);
-  --white: rgb(255,255,255);
+  --white: rgb(255, 255, 255);
   --razzmatazz:rgb(254,44,85);
-  --splash:rgb(37,244,238);
+  --splash:#25f4ee;
+  color:var(--white);
   h1, h2, h3, h4, h5, figure, p, ol, ul {
   margin: 0;
 }
