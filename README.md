@@ -10,5 +10,6 @@ Designed as browser background to share with friends.
 
 Javascipt / CSS / React / React Router
 
+- Keyword search enabled
 - API data is from [Visual Crossing](https://www.visualcrossing.com/weather-api/)
 - Color Pallate - inspired by [TikTok](https://tiktokbrandbook.com/)
