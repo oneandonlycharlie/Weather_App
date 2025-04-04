@@ -4,6 +4,7 @@
 
 ## Overview
 A desktop display of weather in real time based on locations. 
+Designed as browser background to share with friends. 
 
 ## Tech Stack
 
