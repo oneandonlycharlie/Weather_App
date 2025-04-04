@@ -3,7 +3,7 @@
 ➡️ Check out the [demo](https://oneandonlycharlie.github.io/Weather_App/)
 
 ## Overview
-A Desktop display of weather in real time based on locations. 
+A desktop display of weather in real time based on locations. 
 
 ## Tech Stack
 
